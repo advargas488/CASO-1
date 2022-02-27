@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Caso_1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Action">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdPlan" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Plane" Relationship="Self.FK_Actions_Plan" FromRole="Actions" ToRole="Planes" />
+    <NavigationProperty Name="Deliverables" Relationship="Self.FK_Deliverables_Actions" FromRole="Actions" ToRole="Deliverables" />
+  </EntityType>
+  <EntityType Name="Cantone">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdProvincia" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Provincia" Relationship="Self.FK_Cantones_Provincias" FromRole="Cantones" ToRole="Provincias" />
+    <NavigationProperty Name="Deliverables" Relationship="Self.FK_Deliverables_Cantones" FromRole="Cantones" ToRole="Deliverables" />
+  </EntityType>
+  <EntityType Name="Deliverable">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdPartido" Type="Int32" Nullable="false" />
+    <Property Name="IdPlan" Type="Int32" Nullable="false" />
+    <Property Name="IdAction" Type="Int32" Nullable="false" />
+    <Property Name="IdCanton" Type="Int32" Nullable="false" />
+    <Property Name="KpiValue" Type="Int32" Nullable="false" />
+    <Property Name="KpiType" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PostTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Checksum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Action" Relationship="Self.FK_Deliverables_Actions" FromRole="Deliverables" ToRole="Actions" />
+    <NavigationProperty Name="Cantone" Relationship="Self.FK_Deliverables_Cantones" FromRole="Deliverables" ToRole="Cantones" />
+    <NavigationProperty Name="Party" Relationship="Self.FK_Deliverables_Parties" FromRole="Deliverables" ToRole="Parties" />
+    <NavigationProperty Name="Plane" Relationship="Self.FK_Deliverables_Plan" FromRole="Deliverables" ToRole="Planes" />
+  </EntityType>
+  <EntityType Name="Party">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="URLFlag" Type="String" MaxLength="2083" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Deliverables" Relationship="Self.FK_Deliverables_Parties" FromRole="Parties" ToRole="Deliverables" />
+    <NavigationProperty Name="Planes" Relationship="Self.FK_Plan_Parties" FromRole="Parties" ToRole="Planes" />
+  </EntityType>
+  <EntityType Name="Plane">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdPartido" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Actions" Relationship="Self.FK_Actions_Plan" FromRole="Planes" ToRole="Actions" />
+    <NavigationProperty Name="Deliverables" Relationship="Self.FK_Deliverables_Plan" FromRole="Planes" ToRole="Deliverables" />
+    <NavigationProperty Name="Party" Relationship="Self.FK_Plan_Parties" FromRole="Planes" ToRole="Parties" />
+  </EntityType>
+  <EntityType Name="Provincia">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Cantones" Relationship="Self.FK_Cantones_Provincias" FromRole="Provincias" ToRole="Cantones" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Apellidos" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="URLPicture" Type="String" MaxLength="2083" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <Association Name="FK_Actions_Plan">
+    <End Role="Planes" Type="Self.Plane" Multiplicity="1" />
+    <End Role="Actions" Type="Self.Action" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Planes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Actions">
+        <PropertyRef Name="IdPlan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Deliverables_Actions">
+    <End Role="Actions" Type="Self.Action" Multiplicity="1" />
+    <End Role="Deliverables" Type="Self.Deliverable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Deliverables">
+        <PropertyRef Name="IdAction" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cantones_Provincias">
+    <End Role="Provincias" Type="Self.Provincia" Multiplicity="1" />
+    <End Role="Cantones" Type="Self.Cantone" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Provincias">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cantones">
+        <PropertyRef Name="IdProvincia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Deliverables_Cantones">
+    <End Role="Cantones" Type="Self.Cantone" Multiplicity="1" />
+    <End Role="Deliverables" Type="Self.Deliverable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cantones">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Deliverables">
+        <PropertyRef Name="IdCanton" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Deliverables_Parties">
+    <End Role="Parties" Type="Self.Party" Multiplicity="1" />
+    <End Role="Deliverables" Type="Self.Deliverable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parties">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Deliverables">
+        <PropertyRef Name="IdPartido" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Deliverables_Plan">
+    <End Role="Planes" Type="Self.Plane" Multiplicity="1" />
+    <End Role="Deliverables" Type="Self.Deliverable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Planes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Deliverables">
+        <PropertyRef Name="IdPlan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Plan_Parties">
+    <End Role="Parties" Type="Self.Party" Multiplicity="1" />
+    <End Role="Planes" Type="Self.Plane" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parties">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Planes">
+        <PropertyRef Name="IdPartido" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Caso_1Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Actions" EntityType="Self.Action" />
+    <EntitySet Name="Cantones" EntityType="Self.Cantone" />
+    <EntitySet Name="Deliverables" EntityType="Self.Deliverable" />
+    <EntitySet Name="Parties" EntityType="Self.Party" />
+    <EntitySet Name="Planes" EntityType="Self.Plane" />
+    <EntitySet Name="Provincias" EntityType="Self.Provincia" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
+    <AssociationSet Name="FK_Actions_Plan" Association="Self.FK_Actions_Plan">
+      <End Role="Planes" EntitySet="Planes" />
+      <End Role="Actions" EntitySet="Actions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Deliverables_Actions" Association="Self.FK_Deliverables_Actions">
+      <End Role="Actions" EntitySet="Actions" />
+      <End Role="Deliverables" EntitySet="Deliverables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cantones_Provincias" Association="Self.FK_Cantones_Provincias">
+      <End Role="Provincias" EntitySet="Provincias" />
+      <End Role="Cantones" EntitySet="Cantones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Deliverables_Cantones" Association="Self.FK_Deliverables_Cantones">
+      <End Role="Cantones" EntitySet="Cantones" />
+      <End Role="Deliverables" EntitySet="Deliverables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Deliverables_Parties" Association="Self.FK_Deliverables_Parties">
+      <End Role="Parties" EntitySet="Parties" />
+      <End Role="Deliverables" EntitySet="Deliverables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Deliverables_Plan" Association="Self.FK_Deliverables_Plan">
+      <End Role="Planes" EntitySet="Planes" />
+      <End Role="Deliverables" EntitySet="Deliverables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Plan_Parties" Association="Self.FK_Plan_Parties">
+      <End Role="Parties" EntitySet="Parties" />
+      <End Role="Planes" EntitySet="Planes" />
+    </AssociationSet>
+    <FunctionImport Name="Consulta_1" ReturnType="Collection(Caso_1Model.Consulta_1_Result)">
+      <Parameter Name="Canton" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Consulta_2" ReturnType="Collection(String)" />
+  </EntityContainer>
+  <ComplexType Name="Consulta_1_Result">
+    <Property Type="Int32" Name="IdPartido" Nullable="false" />
+    <Property Type="Int32" Name="IdAction" Nullable="false" />
+    <Property Type="Int32" Name="IdCanton" Nullable="false" />
+    <Property Type="Int32" Name="IdPlan" Nullable="false" />
+    <Property Type="DateTime" Name="PostTime" Nullable="false" Precision="23" />
+  </ComplexType>
+</Schema>

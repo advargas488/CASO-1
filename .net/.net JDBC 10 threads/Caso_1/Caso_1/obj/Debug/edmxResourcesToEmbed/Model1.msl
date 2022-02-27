@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Caso_1ModelStoreContainer" CdmEntityContainer="Caso_1Entities">
+    <EntitySetMapping Name="Actions">
+      <EntityTypeMapping TypeName="Caso_1Model.Action">
+        <MappingFragment StoreEntitySet="Actions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdPlan" ColumnName="IdPlan" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cantones">
+      <EntityTypeMapping TypeName="Caso_1Model.Cantone">
+        <MappingFragment StoreEntitySet="Cantones">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdProvincia" ColumnName="IdProvincia" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Deliverables">
+      <EntityTypeMapping TypeName="Caso_1Model.Deliverable">
+        <MappingFragment StoreEntitySet="Deliverables">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdPartido" ColumnName="IdPartido" />
+          <ScalarProperty Name="IdPlan" ColumnName="IdPlan" />
+          <ScalarProperty Name="IdAction" ColumnName="IdAction" />
+          <ScalarProperty Name="IdCanton" ColumnName="IdCanton" />
+          <ScalarProperty Name="KpiValue" ColumnName="KpiValue" />
+          <ScalarProperty Name="KpiType" ColumnName="KpiType" />
+          <ScalarProperty Name="PostTime" ColumnName="PostTime" />
+          <ScalarProperty Name="Checksum" ColumnName="Checksum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Parties">
+      <EntityTypeMapping TypeName="Caso_1Model.Party">
+        <MappingFragment StoreEntitySet="Parties">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="URLFlag" ColumnName="URLFlag" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Planes">
+      <EntityTypeMapping TypeName="Caso_1Model.Plane">
+        <MappingFragment StoreEntitySet="Planes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdPartido" ColumnName="IdPartido" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Provincias">
+      <EntityTypeMapping TypeName="Caso_1Model.Provincia">
+        <MappingFragment StoreEntitySet="Provincias">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="Caso_1Model.Usuario">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="URLPicture" ColumnName="URLPicture" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Consulta_1" FunctionName="Caso_1Model.Store.Consulta_1">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Caso_1Model.Consulta_1_Result">
+          <ScalarProperty Name="IdPartido" ColumnName="IdPartido" />
+          <ScalarProperty Name="IdAction" ColumnName="IdAction" />
+          <ScalarProperty Name="IdCanton" ColumnName="IdCanton" />
+          <ScalarProperty Name="IdPlan" ColumnName="IdPlan" />
+          <ScalarProperty Name="PostTime" ColumnName="PostTime" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Consulta_2" FunctionName="Caso_1Model.Store.Consulta_2" />
+  </EntityContainerMapping>
+</Mapping>

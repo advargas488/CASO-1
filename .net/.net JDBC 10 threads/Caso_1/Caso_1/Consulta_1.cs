@@ -36,6 +36,7 @@ namespace Caso_1
                 //foreach (DataRow dr in dt.Rows)
                 //{
                 //    Console.WriteLine(dr["IdPartido"]);
+                //    Console.WriteLine(dr["IdPartido"]);
                 //}
             }
             catch (Exception ex)

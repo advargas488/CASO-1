@@ -19,16 +19,16 @@ namespace Caso_1
         {
             //=============CONSULTA 1===================
             //cantones para los 10 threads
-            cantones.Add("Palmares");
-            cantones.Add("Naranjo");
-            cantones.Add("Poas");
-            cantones.Add("Upala");
-            cantones.Add("Acosta");
-            cantones.Add("Aserri");
-            cantones.Add("Barva");
-            cantones.Add("Mora");
-            cantones.Add("Terrazu");
-            cantones.Add("Belen");
+            cantones.Add("Zaozerne");
+            cantones.Add("Göteborg");
+            cantones.Add("Tiantai Chengguanzhe");
+            cantones.Add("Sanandaj");
+            cantones.Add("Guangang");
+            cantones.Add("Muzaffargarh");
+            cantones.Add("Ubá");
+            cantones.Add("Ichihara");
+            cantones.Add("Kokubunji");
+            cantones.Add("Zaozerne");
             Thread[] threadList = new Thread[10];
             var stopwatch = Stopwatch.StartNew();
             for (int i = 0; i < 10; i++)

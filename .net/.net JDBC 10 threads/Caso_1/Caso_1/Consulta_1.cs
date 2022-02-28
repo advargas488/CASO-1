@@ -33,11 +33,14 @@ namespace Caso_1
                 da.Fill(dt);
                 //aqui se imprime la data que pide el query, puede quitar los comentarios
                 //yo lo comente para no tener tanto output en mi consola
-                //foreach (DataRow dr in dt.Rows)
-                //{
-                //    Console.WriteLine(dr["IdPartido"]);
-                //    Console.WriteLine(dr["IdPartido"]);
-                //}
+                foreach (DataRow dr in dt.Rows)
+                {
+                    Console.WriteLine(dr["IdPartido"]);
+                    Console.WriteLine(dr["IdAction"]);
+                    Console.WriteLine(dr["IdCanton"]);
+                    Console.WriteLine(dr["IdPlan"]);
+                    Console.WriteLine(dr["PostTime"]);
+                }
             }
             catch (Exception ex)
             {

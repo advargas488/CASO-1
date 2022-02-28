@@ -21,6 +21,7 @@ namespace Caso_1
                 da.Fill(dt);
                 foreach (DataRow dr in dt.Rows)
                 {
+                    //aqui se imprime la data que pide el query
                     Console.WriteLine(dr["Nombre"]);
                 }
                 conn.Close();

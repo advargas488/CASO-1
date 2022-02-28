@@ -18,7 +18,7 @@ public class Pool {
         data.setInitialSize(2);
         data.setMaxTotal(5);
         data.setMaxIdle(5);
-        data.setMinIdle(2);
+        data.setMinIdle(2); 
     }
 
     public Connection connection() throws SQLException {

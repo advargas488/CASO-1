@@ -1,6 +1,6 @@
 import java.sql.*;
 
-public class Consulta1 extends Thread{
+public class Consulta1 extends Thread{//extends thread hace que esta clase sea un thread
     private String Canton;
     private int i;
     public Consulta1(String Canton, int i){

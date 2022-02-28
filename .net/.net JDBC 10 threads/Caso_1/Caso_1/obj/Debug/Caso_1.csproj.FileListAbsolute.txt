@@ -54,3 +54,5 @@ C:\Users\Dell\OneDrive\Desktop\I-SEMESTRE 2022\BASES II\CASO 1\.net\.net JDBC 10
 C:\Users\Dell\OneDrive\Desktop\I-SEMESTRE 2022\BASES II\CASO 1\.net\.net JDBC 10 threads\Caso_1\Caso_1\obj\Debug\Caso_1.csproj.CopyComplete
 C:\Users\Dell\OneDrive\Desktop\I-SEMESTRE 2022\BASES II\CASO 1\.net\.net JDBC 10 threads\Caso_1\Caso_1\obj\Debug\Caso_1.exe
 C:\Users\Dell\OneDrive\Desktop\I-SEMESTRE 2022\BASES II\CASO 1\.net\.net JDBC 10 threads\Caso_1\Caso_1\obj\Debug\Caso_1.pdb
+C:\Users\Dell\OneDrive\Desktop\I-SEMESTRE 2022\BASES II\CASO 1\.net\.net JDBC 10 threads\Caso_1\Caso_1\bin\Debug\System.Reactive.dll
+C:\Users\Dell\OneDrive\Desktop\I-SEMESTRE 2022\BASES II\CASO 1\.net\.net JDBC 10 threads\Caso_1\Caso_1\bin\Debug\System.Reactive.xml

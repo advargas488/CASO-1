@@ -1,0 +1,30 @@
+{
+  "name": "caso1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "java": {
+    "dependencies": [
+      {
+        "groupId": "com.h2database",
+        "artifactId": "h2",
+        "version": "1.4.195"
+      }
+    ]
+  },
+  "dependencies": {
+    "mssql": "^8.0.2",
+    "node-java-maven": "^0.1.2",
+    "rest-mssql-nodejs": "^1.0.10"
+  },
+  "devDependencies": {
+    "@naxmefy/jdbc": "^0.1.0",
+    "java": "^0.8.0",
+    "node-java-maven": "^0.0.12"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
